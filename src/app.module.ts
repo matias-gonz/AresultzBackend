@@ -9,7 +9,6 @@ import { MentoringController } from './mentoring/mentoring.controller';
 import { PaymentController } from './payment/payment.controller';
 import { PaymentService } from './payment/payment.service';
 import { MailerService } from './mailer/mailer.service';
-import { FirebaseService } from './firebase/firebase.service';
 import { TeacherService } from './teacher/teacher.service';
 
 @Module({
@@ -31,7 +30,6 @@ import { TeacherService } from './teacher/teacher.service';
     PaymentService,
     MailerService,
     WebHookService,
-    FirebaseService,
     TeacherService,
   ],
 })

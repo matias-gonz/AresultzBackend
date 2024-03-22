@@ -14,14 +14,13 @@ export class MailerService {
     ).split(',');
   }
 
-  async sendConfirmationEmail(contactEmail: string, paymentLink: string) {
+  async sendConfirmationEmail(contactEmail: string) {
     const data: MailDataRequired = {
       to: contactEmail,
-      from: 'anytimehelp@panthera.ar',
+      from: 'contacto@aresultz.com',
       subject: 'Solicitud de asesoría recibida',
       text: `¡Muchas gracias!\n
 Hemos recibido tu solicitud de asesoría y se han notificado a los profesores.\n
-Finaliza tu pago para asegurar la asesoría si aún no lo has hecho en este link: ${paymentLink}.\n
 
 Te contactaremos a la brevedad con más información.
       `,
@@ -32,18 +31,17 @@ Te contactaremos a la brevedad con más información.
 
   async sendRequestAlertEmail(
     contactEmail: string,
-    description: string,
-    category: string,
+    comments: string,
+    subject: string,
   ) {
     const data: MailDataRequired = {
       to: this.notificationEmails,
       from: 'anytimehelp@panthera.ar',
       subject: 'Hemos recibido una solicitud de asesoría!!!!',
       text: `Hemos recibido una solicitud de asesoría de ${contactEmail}\n
-El pago está pendiende en este momento.\n
-El alumno seleccionó la categoría de: ${category}\n
+El alumno seleccionó la asignatura: ${subject}\n
 Y ha escrito lo siguiente:\n
-${description}\n
+${comments}\n
       `,
     };
 
