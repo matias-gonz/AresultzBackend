@@ -9,6 +9,6 @@ export class AppService {
 
   getMessage(): string {
     const message = ConfigLoader.loadConfig(ConfigKeys.Message);
-    return 'In payment test, message is: ' + message;
+    return 'Welcome to staging aresultz, ' + message;
   }
 }
