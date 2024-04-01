@@ -6,8 +6,8 @@ import { Subject } from 'src/teacher/teacher.model';
 export type MentoringRequest = {
   comments: string;
   email: string;
-  subject: string;
-  phone?: string;
+  selectedCourse: string;
+  phone: string;
 };
 
 @Injectable()
@@ -24,7 +24,8 @@ export class MentoringService {
     this.mailerService.sendRequestAlertEmail(
       mentoringRequest.email,
       mentoringRequest.comments,
-      mentoringRequest.subject,
+      mentoringRequest.selectedCourse,
+      mentoringRequest.phone,
     );
 
     return mentoring;
@@ -36,7 +37,7 @@ export class MentoringService {
       contactEmail: mentoringRequest.email,
       createdAt: new Date().toISOString(),
       description: mentoringRequest.comments,
-      subject: mentoringRequest.subject as Subject,
+      subject: mentoringRequest.selectedCourse as Subject,
     };
   }
 }

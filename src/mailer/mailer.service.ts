@@ -33,12 +33,14 @@ Te contactaremos a la brevedad con más información.
     contactEmail: string,
     comments: string,
     subject: string,
+    phone: string,
   ) {
     const data: MailDataRequired = {
       to: this.notificationEmails,
-      from: 'anytimehelp@panthera.ar',
+      from: 'contacto@aresultz.com',
       subject: 'Hemos recibido una solicitud de asesoría!!!!',
       text: `Hemos recibido una solicitud de asesoría de ${contactEmail}\n
+El alumno dejó su número de teléfono: ${phone}\n
 El alumno seleccionó la asignatura: ${subject}\n
 Y ha escrito lo siguiente:\n
 ${comments}\n
