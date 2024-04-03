@@ -20,7 +20,7 @@ export class MailerService {
       from: 'contacto@aresultz.com',
       subject: 'Solicitud de asesoría recibida',
       text: `¡Muchas gracias!\n
-Hemos recibido tu solicitud de asesoría y se han notificado a los profesores.\n
+Hemos recibido tu solicitud de asesoría y se ha notificado a los profesores.\n
 
 Te contactaremos a la brevedad con más información.
       `,
@@ -70,7 +70,6 @@ Nos comunicaremos contigo para la asesoría lo más pronto posible.
   private async sendEmail(data: MailDataRequired) {
     if (ConfigLoader.isDev()) {
       console.log('Fake sending email with data', data);
-      return;
     }
     await mailer.send(data);
   }

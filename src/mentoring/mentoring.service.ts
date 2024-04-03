@@ -19,14 +19,28 @@ export class MentoringService {
   ): Promise<Mentoring> {
     const mentoring = this.createMentoring(mentoringRequest);
 
-    this.mailerService.sendConfirmationEmail(mentoringRequest.email);
+    await this.mailerService
+      .sendConfirmationEmail(mentoringRequest.email)
+      .then((data) =>
+        console.log('data from sendgrid in confirmation is', data),
+      )
+      .catch((err) =>
+        console.log('Error from sendgrid in confirmation is', err),
+      );
 
-    this.mailerService.sendRequestAlertEmail(
-      mentoringRequest.email,
-      mentoringRequest.comments,
-      mentoringRequest.selectedCourse,
-      mentoringRequest.phone,
-    );
+    await this.mailerService
+      .sendRequestAlertEmail(
+        mentoringRequest.email,
+        mentoringRequest.comments,
+        mentoringRequest.selectedCourse,
+        mentoringRequest.phone,
+      )
+      .then((data) =>
+        console.log('data from sendgrid in request alert is', data),
+      )
+      .catch((err) =>
+        console.log('Error from sendgrid in request alert is', err),
+      );
 
     return mentoring;
   }
